@@ -2,8 +2,8 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   target: ["web", "es5"],
@@ -13,20 +13,12 @@ module.exports = {
     filename: "[name].bundle.js",
     clean: true,
   },
-  resolve: {
-    modules: [path.join(__dirname, "src"), "node_modules"],
-    alias: {
-      react: path.join(__dirname, "node_modules", "react"),
-    },
-  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: "/node_modules",
-        use: {
-          loader: "babel-loader",
-        },
+        use: "babel-loader",
       },
       {
         test: /\.css$/,
@@ -40,7 +32,7 @@ module.exports = {
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   optimization: {
     minimizer: [new CssMinimizerPlugin()],
