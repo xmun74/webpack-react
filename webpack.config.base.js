@@ -42,4 +42,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new BundleAnalyzerPlugin(),
   ],
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
 };
